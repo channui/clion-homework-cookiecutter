@@ -1,4 +1,10 @@
 cmake_minimum_required(VERSION 3.20)
+
+add_compile_options ( -fsanitize=address )
+add_compile_options ( -Wall -Wextra -Wuninitialized -pedantic-errors -Wconversion )
+#add_compile_options ( -Werror )
+add_link_options ( -fsanitize=address )
+
 project({{cookiecutter.project_name}})
 
 set (CMAKE_EXPORT_COMPILE_COMMANDS ON)
@@ -34,4 +40,4 @@ target_link_libraries(${PROJECT_NAME}_test PRIVATE Catch2::Catch2)
 #configure_file(example.txt example.txt COPYONLY)
 
 enable_testing()
-add_test(UnitTests ${PROJECT_NAME}_tests)
+add_test(UnitTests ${PROJECT_NAME}_test)
