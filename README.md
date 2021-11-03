@@ -36,3 +36,25 @@ you -fsanitize leak checking, and catch2 is a unit testing framework (boost also
 2. Uncheck Use visual represntation for Sanitizer's output
 3. Prepend `detect_leaks=1` to the Address Sanitizer line
 
+### Windows
+
+Catch2 install from https://github.com/catchorg/Catch2/blob/v2.x/docs/cmake-integration.md
+
+1. Install catch2 from vcpkg in a terminal window
+
+
+    cd C:\Users\<yourusername>
+
+    git clone https://github.com/Microsoft/vcpkg.git
+    cd vcpkg
+    ./bootstrap-vcpkg.sh
+    ./vcpkg integrate install
+    ./vcpkg install --triplet=x64-windows-static catch2
+    ./vcpkg install --triplet=x64-windows-static doctest
+
+2. Navigate to CLion -> Preferences -> Build, Execution, Deployment -> CMake
+3. Add the following to the Environment setting
+
+    CATCH2_ROOT=C:\Users\<yourusername>\vcpkg\packages\catch2_x64-windows-static
+
+
